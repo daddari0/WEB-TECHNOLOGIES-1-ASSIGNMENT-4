@@ -1,0 +1,6 @@
+.DS_Store
+screenshots/
+*.docx
+~$*.docx
+generate_assignment4_report.py
+__pycache__/

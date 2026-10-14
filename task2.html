@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2: Registration for AITU Hack 2026 | Assignment #4</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Navigation -->
+  <nav class="navbar navbar-expand-lg assignment-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-ui-checks text-success"></i>
+        <span>Assignment #4</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="task1.html">Task 1: Train Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="task2.html">Task 2: Hackathon Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="task3.html">Task 3: Bad Form Fix</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge-student">Abay Amirzhanuly &bull; IT-2510</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <!-- Breadcrumb Header -->
+      <div class="mb-4 text-center">
+        <span class="badge bg-primary-subtle text-primary fw-bold px-3 py-2 rounded-pill mb-2">
+          Task 2 &bull; Pure Native HTML5 Validation (No JavaScript, No pattern)
+        </span>
+        <h2 class="fw-bold mb-1" style="color: var(--dark-text);">Registration for AITU Hack 2026</h2>
+        <p class="text-secondary small mb-0">
+          Validation is executed natively by the browser. Error alerts appear only after the user changes a field via <code>:user-invalid</code>.
+        </p>
+      </div>
+
+      <!-- Registration Form Card -->
+      <div class="hack-card mb-5">
+        
+        <header class="hack-header">
+          <h1>AITU Hack 2026 Registration</h1>
+          <p>Join Astana's premier collegiate engineering hackathon. Fields marked with <span class="text-warning fw-bold">*</span> are required.</p>
+        </header>
+
+        <div class="hack-body">
+          <!-- Form has NO novalidate and NO JS -->
+          <form id="hackathonForm" class="hack-form" action="#" method="post">
+
+            <!-- 1. Full name (2-40 chars) & 2. University email -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <label for="fullName" class="form-label fw-semibold">
+                  Full name <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="fullName" 
+                  name="full_name" 
+                  placeholder="e.g. Anna-Maria Lee" 
+                  minlength="2" 
+                  maxlength="40" 
+                  required
+                >
+                <div class="field-hint">Must be 2–40 characters.</div>
+                <div class="invalid-feedback">Please enter a valid full name (2–40 characters).</div>
+                <div class="valid-feedback text-success small">Name format looks good!</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="universityEmail" class="form-label fw-semibold">
+                  University email <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="universityEmail" 
+                  name="university_email" 
+                  placeholder="a.fedenko@astanait.edu.kz" 
+                  required
+                >
+                <div class="field-hint">Must be a valid email format.</div>
+                <div class="invalid-feedback">Please enter a valid email address with an @ and domain.</div>
+                <div class="valid-feedback text-success small">Email format is valid!</div>
+              </div>
+            </div>
+
+            <!-- 3. Age (16-30) & 4. Team size (1-4) -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <label for="age" class="form-label fw-semibold">
+                  Age <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="age" 
+                  name="age" 
+                  min="16" 
+                  max="30" 
+                  step="1" 
+                  placeholder="16 - 30" 
+                  required
+                >
+                <div class="field-hint">A whole number between 16 and 30.</div>
+                <div class="invalid-feedback">Age must be a whole number between 16 and 30.</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="teamSize" class="form-label fw-semibold">
+                  Team size <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="teamSize" 
+                  name="team_size" 
+                  min="1" 
+                  max="4" 
+                  step="1" 
+                  placeholder="1 - 4 members" 
+                  required
+                >
+                <div class="field-hint">A whole number from 1 to 4 members.</div>
+                <div class="invalid-feedback">Team size must be a whole number from 1 to 4.</div>
+              </div>
+            </div>
+
+            <!-- 5. Track (Select) & 6. Arrival day (20-22 Nov 2026) -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <label for="hackTrack" class="form-label fw-semibold">
+                  Track <span class="required-star">*</span>
+                </label>
+                <select class="form-select" id="hackTrack" name="track" required>
+                  <option value="" disabled selected>Choose…</option>
+                  <option value="Web">Web</option>
+                  <option value="Mobile">Mobile</option>
+                  <option value="AI">AI</option>
+                  <option value="GameDev">GameDev</option>
+                </select>
+                <div class="field-hint">Select your competition domain.</div>
+                <div class="invalid-feedback">Please choose a track from the dropdown.</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="arrivalDay" class="form-label fw-semibold">
+                  Arrival day <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="date" 
+                  class="form-control" 
+                  id="arrivalDay" 
+                  name="arrival_day" 
+                  min="2026-11-20" 
+                  max="2026-11-22" 
+                  required
+                >
+                <div class="field-hint">Only dates between 20 and 22 November 2026.</div>
+                <div class="invalid-feedback">Arrival date must be between 20.11.2026 and 22.11.2026.</div>
+              </div>
+            </div>
+
+            <!-- 7. Check-in time (09:00-18:00, step=1800s) & 8. Entry fee (0-5000, step=500) -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <label for="checkInTime" class="form-label fw-semibold">
+                  Check-in time <span class="required-star">*</span>
+                </label>
+                <!-- step="1800" enforces 30-minute intervals (1800 seconds) in HTML5 -->
+                <input 
+                  type="time" 
+                  class="form-control" 
+                  id="checkInTime" 
+                  name="check_in_time" 
+                  min="09:00" 
+                  max="18:00" 
+                  step="1800" 
+                  required
+                >
+                <div class="field-hint">Between 09:00 and 18:00, in 30-minute steps.</div>
+                <div class="invalid-feedback">Time must be between 09:00 and 18:00 in 30-min increments.</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="entryFee" class="form-label fw-semibold">
+                  Entry fee (₸) <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="entryFee" 
+                  name="entry_fee" 
+                  min="0" 
+                  max="5000" 
+                  step="500" 
+                  placeholder="0 - 5000 ₸ (steps of 500)" 
+                  required
+                >
+                <div class="field-hint">0–5000 ₸ in increments of 500 ₸.</div>
+                <div class="invalid-feedback">Entry fee must be from 0 to 5000 ₸ in steps of 500 ₸.</div>
+              </div>
+            </div>
+
+            <!-- 9. Experience level (Radio) -->
+            <div class="mb-3">
+              <fieldset class="border-0 p-0 m-0">
+                <legend class="form-label fw-semibold d-block mb-2">
+                  Experience level <span class="required-star">*</span>
+                </legend>
+                <div class="d-flex flex-wrap gap-4 align-items-center">
+                  <div class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="experience_level" 
+                      id="expBeginner" 
+                      value="Beginner" 
+                      required
+                    >
+                    <label class="form-check-label" for="expBeginner">Beginner</label>
+                  </div>
+                  <div class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="experience_level" 
+                      id="expIntermediate" 
+                      value="Intermediate" 
+                      required
+                    >
+                    <label class="form-check-label" for="expIntermediate">Intermediate</label>
+                  </div>
+                  <div class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="experience_level" 
+                      id="expAdvanced" 
+                      value="Advanced" 
+                      required
+                    >
+                    <label class="form-check-label" for="expAdvanced">Advanced</label>
+                  </div>
+                </div>
+                <div class="field-hint">Select one of the three options.</div>
+              </fieldset>
+            </div>
+
+            <!-- 10. GitHub profile (Optional, full URL) & 11. Password (8-20 chars) -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <label for="githubProfile" class="form-label fw-semibold">
+                  GitHub profile <span class="text-secondary small fw-normal">(Optional)</span>
+                </label>
+                <input 
+                  type="url" 
+                  class="form-control" 
+                  id="githubProfile" 
+                  name="github_profile" 
+                  placeholder="https://github.com/username"
+                >
+                <div class="field-hint">Optional: must be a full URL with https:// if provided.</div>
+                <div class="invalid-feedback">Please enter a complete URL starting with http:// or https://.</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="accountPassword" class="form-label fw-semibold">
+                  Password <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="accountPassword" 
+                  name="password" 
+                  minlength="8" 
+                  maxlength="20" 
+                  placeholder="8 - 20 characters" 
+                  required
+                >
+                <div class="field-hint">Length must be between 8 and 20 characters.</div>
+                <div class="invalid-feedback">Password must be 8–20 characters long.</div>
+              </div>
+            </div>
+
+            <!-- 12. Motivation (50-300 characters) -->
+            <div class="mb-3">
+              <label for="motivationText" class="form-label fw-semibold">
+                Motivation <span class="required-star">*</span>
+              </label>
+              <textarea 
+                class="form-control" 
+                id="motivationText" 
+                name="motivation" 
+                rows="4" 
+                minlength="50" 
+                maxlength="300" 
+                placeholder="Tell us why you want to participate in AITU Hack 2026 (50 to 300 characters)..." 
+                required
+              ></textarea>
+              <div class="field-hint">Minimum 50 characters, maximum 300 characters.</div>
+              <div class="invalid-feedback">Your motivation statement must contain between 50 and 300 characters.</div>
+            </div>
+
+            <!-- 13. Rules agreement (Checkbox) -->
+            <div class="mb-4">
+              <div class="form-check">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  id="rulesAgreement" 
+                  name="rules_agreement" 
+                  required
+                >
+                <label class="form-check-label fw-semibold" for="rulesAgreement">
+                  I agree to the AITU Hack 2026 participation rules and code of conduct <span class="required-star">*</span>
+                </label>
+                <div class="invalid-feedback">You must tick this checkbox to proceed.</div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-end gap-2 pt-2">
+              <button type="reset" class="btn btn-clear">Reset</button>
+              <button type="submit" class="btn btn-find px-4">Submit Registration</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Verification Test Table: Results Table from the Assignment -->
+      <section class="test-suite-card">
+        <h4 class="fw-bold mb-3" style="color: var(--primary-teal);">
+          <i class="bi bi-clipboard-check me-2"></i>Task 2 Verification Matrix &amp; Results
+        </h4>
+        <p class="text-secondary small mb-3">
+          This table documents all 13 rules tested against the exact values from the assignment specification. All constraints are implemented strictly with HTML5 native attributes without JavaScript or regex pattern attributes.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle mb-0" style="font-size: 0.88rem;">
+            <thead class="table-light">
+              <tr>
+                <th scope="col" style="width: 15%;">Field</th>
+                <th scope="col" style="width: 28%;">HTML Attributes Used</th>
+                <th scope="col" style="width: 25%;">Must Accept (Valid)</th>
+                <th scope="col" style="width: 22%;">Must Reject (Invalid)</th>
+                <th scope="col" style="width: 10%;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Full name *</strong></td>
+                <td><code>type="text" required minlength="2" maxlength="40"</code></td>
+                <td><span class="badge bg-success-subtle text-success">Anna-Maria Lee</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">A</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>University email *</strong></td>
+                <td><code>type="email" required</code></td>
+                <td><span class="badge bg-success-subtle text-success">a.fedenko@astanait.edu.kz</span></td>
+                <td>
+                  <span class="badge bg-danger-subtle text-danger">a.fedenko</span><br>
+                  <span class="badge bg-danger-subtle text-danger">a.fedenko@</span>
+                </td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Age *</strong></td>
+                <td><code>type="number" required min="16" max="30" step="1"</code></td>
+                <td><span class="badge bg-success-subtle text-success">18</span></td>
+                <td>
+                  <span class="badge bg-danger-subtle text-danger">15</span>, 
+                  <span class="badge bg-danger-subtle text-danger">31</span>
+                </td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Team size *</strong></td>
+                <td><code>type="number" required min="1" max="4" step="1"</code></td>
+                <td><span class="badge bg-success-subtle text-success">4</span></td>
+                <td>
+                  <span class="badge bg-danger-subtle text-danger">5</span>, 
+                  <span class="badge bg-danger-subtle text-danger">2.5</span>
+                </td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Track *</strong></td>
+                <td><code>&lt;select required&gt;</code> with disabled <code>value=""</code></td>
+                <td><span class="badge bg-success-subtle text-success">Web</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">"Choose…"</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Arrival day *</strong></td>
+                <td><code>type="date" required min="2026-11-20" max="2026-11-22"</code></td>
+                <td><span class="badge bg-success-subtle text-success">21.11.2026</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">25.11.2026</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Check-in time *</strong></td>
+                <td><code>type="time" required min="09:00" max="18:00" step="1800"</code></td>
+                <td><span class="badge bg-success-subtle text-success">10:30</span></td>
+                <td>
+                  <span class="badge bg-danger-subtle text-danger">10:15</span>, 
+                  <span class="badge bg-danger-subtle text-danger">19:00</span>
+                </td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Entry fee *</strong></td>
+                <td><code>type="number" required min="0" max="5000" step="500"</code></td>
+                <td><span class="badge bg-success-subtle text-success">1500</span></td>
+                <td>
+                  <span class="badge bg-danger-subtle text-danger">1250</span>, 
+                  <span class="badge bg-danger-subtle text-danger">6000</span>
+                </td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Experience level *</strong></td>
+                <td><code>type="radio" name="experience_level" required</code></td>
+                <td><span class="badge bg-success-subtle text-success">Beginner</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">nothing chosen</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>GitHub profile</strong></td>
+                <td><code>type="url"</code> (optional, no required)</td>
+                <td>
+                  <span class="badge bg-success-subtle text-success">(empty)</span><br>
+                  <span class="badge bg-success-subtle text-success">https://github.com/yerassyl-dev</span>
+                </td>
+                <td><span class="badge bg-danger-subtle text-danger">github.com/yerassyl-dev</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Password *</strong></td>
+                <td><code>type="password" required minlength="8" maxlength="20"</code></td>
+                <td><span class="badge bg-success-subtle text-success">Astana2026</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">short</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Motivation *</strong></td>
+                <td><code>&lt;textarea required minlength="50" maxlength="300"&gt;</code></td>
+                <td><span class="badge bg-success-subtle text-success">120 characters</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">49 characters</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Rules agreement *</strong></td>
+                <td><code>type="checkbox" required</code></td>
+                <td><span class="badge bg-success-subtle text-success">ticked</span></td>
+                <td><span class="badge bg-danger-subtle text-danger">not ticked</span></td>
+                <td><span class="badge bg-success">Passed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="assignment-footer text-center">
+    <div class="container">
+      <p class="mb-1 fw-semibold">Web Technologies 1 &bull; Assignment #4: Forms &amp; Validation</p>
+      <small class="text-muted">Developed by Abay Amirzhanuly (IT-2510) &bull; Astana IT University &bull; Fall 2026</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

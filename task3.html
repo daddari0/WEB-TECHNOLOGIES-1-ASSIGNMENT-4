@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: Fix a Bad Form | Assignment #4</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Navigation -->
+  <nav class="navbar navbar-expand-lg assignment-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-ui-checks text-success"></i>
+        <span>Assignment #4</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="task1.html">Task 1: Train Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="task2.html">Task 2: Hackathon Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="task3.html">Task 3: Bad Form Fix</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge-student">Abay Amirzhanuly &bull; IT-2510</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <!-- Breadcrumb Header -->
+      <div class="mb-4 text-center">
+        <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill mb-2">
+          Task 3 &bull; Usability, Accessibility &amp; W3C Standards
+        </span>
+        <h2 class="fw-bold mb-1" style="color: var(--dark-text);">Fix a Bad Form (Café Table Reservation)</h2>
+        <p class="text-secondary small mb-0">
+          Identified 14 critical usability, accessibility, and submission defects with complete solutions and alternative options.
+        </p>
+      </div>
+
+      <!-- Comparison Section: Original Bad Code vs Rebuilt Accessible Bootstrap Form -->
+      <div class="row g-4 mb-5">
+        
+        <!-- Left Column: The Original Bad Form Snippet -->
+        <div class="col-12 col-lg-5">
+          <div class="card h-100 border-danger shadow-sm" style="border-radius: var(--card-radius); overflow: hidden;">
+            <div class="card-header bg-danger text-white py-3 px-4 d-flex justify-content-between align-items-center">
+              <h5 class="mb-0 fw-bold"><i class="bi bi-x-octagon me-2"></i>Original Bad Form</h5>
+              <span class="badge bg-white text-danger fw-bold">14 Defects</span>
+            </div>
+            <div class="card-body p-4 bg-light">
+              <p class="small text-muted mb-3">
+                This published markup looks almost normal, but breaks keyboard navigation, screen reader accessibility, and data transmission:
+              </p>
+              
+              <!-- Code block displaying original snippet -->
+              <pre class="bg-dark text-light p-3 rounded-3 small mb-0" style="font-size: 0.78rem; line-height: 1.5; overflow-x: auto;"><code>&lt;h2&gt;Reserve a table&lt;/h2&gt;
+&lt;form&gt;
+  &lt;input type="text" placeholder="Your name"&gt;
+  &lt;input type="text" placeholder="Email"&gt;
+  &lt;label&gt;Phone&lt;/label&gt;
+  &lt;input type="text" id="phone"&gt;
+  &lt;label for="guests"&gt;Guests&lt;/label&gt;
+  &lt;input type="text" id="people"&gt;
+  &lt;label for="date"&gt;Date&lt;/label&gt;
+  &lt;input type="text" id="date" placeholder="dd/mm/yyyy"&gt;
+  &lt;p&gt;Seating:&lt;/p&gt;
+  &lt;input type="radio" name="inside" id="date"&gt; Inside
+  &lt;input type="radio" name="terrace"&gt; Terrace
+  &lt;select&gt;
+    &lt;option&gt;Lunch&lt;/option&gt;
+    &lt;option&gt;Dinner&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;textarea placeholder="Comments"&gt;&lt;/textarea&gt;
+  &lt;input type="checkbox"&gt; I agree to the terms
+  &lt;div class="btn btn-primary"&gt;Reserve&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Rebuilt Accessible Form with Bootstrap 5.3 -->
+        <div class="col-12 col-lg-7">
+          <div class="card h-100 border-success shadow-sm" style="border-radius: var(--card-radius); overflow: hidden;">
+            <div class="card-header bg-success text-white py-3 px-4 d-flex justify-content-between align-items-center">
+              <h5 class="mb-0 fw-bold"><i class="bi bi-check-circle me-2"></i>Fixed &amp; Rebuilt Form (Bootstrap 5.3)</h5>
+              <span class="badge bg-white text-success fw-bold">100% W3C Valid</span>
+            </div>
+            
+            <div class="card-body p-4 bg-white">
+              <form id="fixedReservationForm" action="#" method="post" class="needs-validation">
+                
+                <h3 class="h4 fw-bold mb-3" style="color: var(--primary-teal);">Reserve a Table</h3>
+
+                <!-- Name & Email -->
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="customerName" class="form-label fw-semibold">Your name <span class="text-danger">*</span></label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="customerName" 
+                      name="customer_name" 
+                      placeholder="e.g. Alikhan" 
+                      autocomplete="name"
+                      required
+                    >
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="customerEmail" class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      id="customerEmail" 
+                      name="customer_email" 
+                      placeholder="name@example.com" 
+                      autocomplete="email"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <!-- Phone & Guests -->
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="customerPhone" class="form-label fw-semibold">Phone <span class="text-danger">*</span></label>
+                    <input 
+                      type="tel" 
+                      class="form-control" 
+                      id="customerPhone" 
+                      name="customer_phone" 
+                      placeholder="+7 701 123 4567" 
+                      autocomplete="tel"
+                      required
+                    >
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="guestsCount" class="form-label fw-semibold">Guests <span class="text-danger">*</span></label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      id="guestsCount" 
+                      name="guests_count" 
+                      min="1" 
+                      max="20" 
+                      step="1" 
+                      value="2" 
+                      required
+                    >
+                  </div>
+                </div>
+
+                <!-- Date & Meal Time -->
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="reservationDate" class="form-label fw-semibold">Date <span class="text-danger">*</span></label>
+                    <input 
+                      type="date" 
+                      class="form-control" 
+                      id="reservationDate" 
+                      name="reservation_date" 
+                      required
+                    >
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="mealTime" class="form-label fw-semibold">Meal time <span class="text-danger">*</span></label>
+                    <select class="form-select" id="mealTime" name="meal_time" required>
+                      <option value="" disabled selected>Select dining time</option>
+                      <option value="lunch">Lunch</option>
+                      <option value="dinner">Dinner</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Seating Radios (Properly Grouped in Fieldset) -->
+                <div class="mb-3">
+                  <fieldset class="border-0 p-0 m-0">
+                    <legend class="form-label fw-semibold d-block mb-2">Seating preference <span class="text-danger">*</span></legend>
+                    <div class="d-flex gap-4">
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="radio" 
+                          name="seating_area" 
+                          id="seatingInside" 
+                          value="inside" 
+                          checked 
+                          required
+                        >
+                        <label class="form-check-label" for="seatingInside">Inside</label>
+                      </div>
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="radio" 
+                          name="seating_area" 
+                          id="seatingTerrace" 
+                          value="terrace" 
+                          required
+                        >
+                        <label class="form-check-label" for="seatingTerrace">Terrace</label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- Comments -->
+                <div class="mb-3">
+                  <label for="reservationComments" class="form-label fw-semibold">Comments</label>
+                  <textarea 
+                    class="form-control" 
+                    id="reservationComments" 
+                    name="reservation_comments" 
+                    rows="3" 
+                    placeholder="Dietary preferences, special requests, or seating notes..."
+                  ></textarea>
+                </div>
+
+                <!-- Agreement Checkbox -->
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="checkbox" 
+                      id="agreeTerms" 
+                      name="agree_terms" 
+                      required
+                    >
+                    <label class="form-check-label" for="agreeTerms">
+                      I agree to the reservation terms and cancellation policy <span class="text-danger">*</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Submit Button: Real semantic <button type="submit"> -->
+                <div class="d-grid d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-primary px-4 py-2 fw-semibold">
+                    <i class="bi bi-calendar2-check me-2"></i>Reserve Table
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Comprehensive Defect Audit Table (14 Problems) -->
+      <section class="test-suite-card mb-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+          <h4 class="fw-bold mb-0" style="color: var(--primary-teal);">
+            <i class="bi bi-table me-2"></i>Complete Audit Table of 14 Form Defects
+          </h4>
+          <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill small">
+            Includes 2 Alternative Solutions with Architectural Justification
+          </span>
+        </div>
+        
+        <p class="text-secondary small mb-4">
+          The table below analyzes every line of the bad form, detailing the user-side failure, accessibility barrier, standard fix, and alternative architectural solutions.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle mb-0" style="font-size: 0.86rem; line-height: 1.55;">
+            <thead class="table-light">
+              <tr>
+                <th scope="col" style="width: 5%;">#</th>
+                <th scope="col" style="width: 22%;">Bad Line of Code</th>
+                <th scope="col" style="width: 33%;">Why it is a problem for the user</th>
+                <th scope="col" style="width: 40%;">How we fixed it &amp; Alternative fixes</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <!-- 1 -->
+              <tr>
+                <td class="text-center fw-bold">1</td>
+                <td><code>&lt;input type="text" placeholder="Your name"&gt;</code></td>
+                <td>
+                  <strong>Missing <code>&lt;label&gt;</code>, <code>id</code>, and <code>name</code>.</strong><br>
+                  Screen readers cannot announce what this input is for. Placeholders disappear upon typing, straining user working memory. Without a <code>name</code> attribute, the customer's name is <em>never transmitted</em> to the server!
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Added explicit <code>&lt;label for="customerName"&gt;Your name&lt;/label&gt;</code>, added <code>id="customerName"</code> and <code>name="customer_name"</code>.
+                </td>
+              </tr>
+
+              <!-- 2 -->
+              <tr>
+                <td class="text-center fw-bold">2</td>
+                <td><code>&lt;input type="text" placeholder="Email"&gt;</code></td>
+                <td>
+                  <strong>Wrong input type (<code>type="text"</code>) and missing label.</strong><br>
+                  Mobile keyboards will not display the <code>@</code> key or domain shortcuts, forcing manual keyboard switches. The browser cannot validate email formatting natively.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Changed to <code>type="email"</code> with connected <code>&lt;label for="customerEmail"&gt;Email&lt;/label&gt;</code>, <code>name="customer_email"</code>, and <code>autocomplete="email"</code>.
+                </td>
+              </tr>
+
+              <!-- 3 -->
+              <tr>
+                <td class="text-center fw-bold">3</td>
+                <td><code>&lt;label&gt;Phone&lt;/label&gt;&lt;input type="text" id="phone"&gt;</code></td>
+                <td>
+                  <strong>Disconnected label and generic text type.</strong><br>
+                  The label lacks the <code>for="phone"</code> attribute. Tapping the word "Phone" does not focus the input on touchscreens. <code>type="text"</code> prevents mobile phones from opening the numeric telephone keypad.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Connected label via <code>for="customerPhone"</code> and set <code>type="tel" id="customerPhone" name="customer_phone" autocomplete="tel"</code>.
+                </td>
+              </tr>
+
+              <!-- 4 (Alternative Fix #1) -->
+              <tr class="problem-row-highlight">
+                <td class="text-center fw-bold">4</td>
+                <td><code>&lt;label for="guests"&gt;Guests&lt;/label&gt;&lt;input type="text" id="people"&gt;</code></td>
+                <td>
+                  <strong>ID Mismatch between label and input!</strong><br>
+                  The label points to <code>for="guests"</code>, but the input has <code>id="people"</code>. Screen readers treat the field as completely unlabeled, and clicking the label fails to activate the input. Also accepts invalid text like "two".
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Aligned IDs: <code>&lt;label for="guestsCount"&gt;</code> and <code>&lt;input type="number" id="guestsCount" name="guests_count" min="1" max="20"&gt;</code>.<br>
+                  <span class="badge-alt-fix mt-1 d-inline-block">Alternative Fix &amp; Decision:</span><br>
+                  <em>Alternative:</em> Change the label's attribute to <code>for="people"</code> to match the existing input ID.<br>
+                  <em>Why we chose ours:</em> Standardizing on "guests" (<code>guestsCount</code>) aligns with the café business domain and matches standard database conventions for restaurant table booking.
+                </td>
+              </tr>
+
+              <!-- 5 -->
+              <tr>
+                <td class="text-center fw-bold">5</td>
+                <td><code>id="date"</code> on lines 10 and 12</td>
+                <td>
+                  <strong>Duplicate ID across two different inputs!</strong><br>
+                  Both the date text input and the radio button have <code>id="date"</code>. Duplicate IDs violate W3C specifications, create invalid HTML markup, and cause assistive tech to focus the wrong element.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Assigned globally unique IDs: <code>id="reservationDate"</code> for the date picker and <code>id="seatingInside"</code> for the radio control.
+                </td>
+              </tr>
+
+              <!-- 6 -->
+              <tr>
+                <td class="text-center fw-bold">6</td>
+                <td><code>&lt;input type="text" id="date" placeholder="dd/mm/yyyy"&gt;</code></td>
+                <td>
+                  <strong>Generic text type used for calendar date.</strong><br>
+                  Users must manually type separators like slashes or dots. On mobile devices, no calendar UI appears, resulting in incorrect formats (e.g. mm/dd vs dd/mm) and invalid calendar dates (e.g. 31/02).
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Changed to native <code>type="date" id="reservationDate" name="reservation_date"</code>, which opens native OS calendar pickers.
+                </td>
+              </tr>
+
+              <!-- 7 -->
+              <tr>
+                <td class="text-center fw-bold">7</td>
+                <td><code>&lt;input type="radio" name="inside"&gt;</code> and <code>&lt;input type="radio" name="terrace"&gt;</code></td>
+                <td>
+                  <strong>Different name attributes for mutually exclusive radios!</strong><br>
+                  Because their <code>name</code> attributes differ, they do not belong to the same radio group. The user can select BOTH simultaneously, and neither can be deselected!
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Grouped under identical <code>name="seating_area"</code> with distinct values (<code>value="inside"</code> and <code>value="terrace"</code>).
+                </td>
+              </tr>
+
+              <!-- 8 -->
+              <tr>
+                <td class="text-center fw-bold">8</td>
+                <td><code>&lt;input type="radio" ...&gt; Inside</code> (Raw text)</td>
+                <td>
+                  <strong>Radio inputs lack connected <code>&lt;label&gt;</code> tags.</strong><br>
+                  The text "Inside" and "Terrace" are loose text nodes. On mobile screens, users have to tap the tiny 13px circle directly, causing high tap-target error rates.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Wrapped each option with <code>&lt;input id="seatingInside"&gt;&lt;label for="seatingInside" class="form-check-label"&gt;Inside&lt;/label&gt;</code> for expanded tap targets.
+                </td>
+              </tr>
+
+              <!-- 9 -->
+              <tr>
+                <td class="text-center fw-bold">9</td>
+                <td><code>&lt;p&gt;Seating:&lt;/p&gt;</code></td>
+                <td>
+                  <strong>Radio group lacks accessible semantic container.</strong><br>
+                  A <code>&lt;p&gt;</code> tag does not establish an accessible group association. Screen reader users navigating by form controls jump directly into radio inputs without knowing what "Inside" refers to.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Replaced paragraph with semantic <code>&lt;fieldset&gt;&lt;legend class="form-label"&gt;Seating preference&lt;/legend&gt;...&lt;/fieldset&gt;</code>.
+                </td>
+              </tr>
+
+              <!-- 10 -->
+              <tr>
+                <td class="text-center fw-bold">10</td>
+                <td><code>&lt;select&gt;&lt;option&gt;Lunch&lt;/option&gt;&lt;option&gt;Dinner&lt;/option&gt;&lt;/select&gt;</code></td>
+                <td>
+                  <strong>Missing label, missing <code>name</code>, and missing option values.</strong><br>
+                  Screen readers cannot identify what this select does. Furthermore, without a <code>name</code> attribute, the selected dining time is completely lost upon form submission!
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Added <code>&lt;label for="mealTime"&gt;Meal time&lt;/label&gt;</code>, added <code>id="mealTime" name="meal_time"</code>, and explicit <code>value="lunch"</code> / <code>value="dinner"</code>.
+                </td>
+              </tr>
+
+              <!-- 11 -->
+              <tr>
+                <td class="text-center fw-bold">11</td>
+                <td><code>&lt;textarea placeholder="Comments"&gt;&lt;/textarea&gt;</code></td>
+                <td>
+                  <strong>Missing label, missing <code>id</code>, and missing <code>name</code>.</strong><br>
+                  Screen readers announce only "edit text, multi-line" without context. Once text is typed, the placeholder disappears, leaving the user with no visual cue of the field's intent.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Added <code>&lt;label for="reservationComments"&gt;Comments&lt;/label&gt;</code>, <code>id="reservationComments"</code>, and <code>name="reservation_comments"</code>.
+                </td>
+              </tr>
+
+              <!-- 12 -->
+              <tr>
+                <td class="text-center fw-bold">12</td>
+                <td><code>&lt;input type="checkbox"&gt; I agree to the terms</code></td>
+                <td>
+                  <strong>Unlinked checkbox and missing required constraint.</strong><br>
+                  The text is loose, so clicking the terms text will not toggle the box. In addition, terms of service agreements must be <code>required</code> to ensure legal consent.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Added <code>id="agreeTerms" name="agree_terms" required</code> and connected <code>&lt;label for="agreeTerms" class="form-check-label"&gt;</code>.
+                </td>
+              </tr>
+
+              <!-- 13 (Alternative Fix #2) -->
+              <tr class="problem-row-highlight">
+                <td class="text-center fw-bold">13</td>
+                <td><code>&lt;div class="btn btn-primary"&gt;Reserve&lt;/div&gt;</code></td>
+                <td>
+                  <strong>Fake button built with a non-interactive <code>&lt;div&gt;</code>!</strong><br>
+                  A <code>&lt;div&gt;</code> is invisible to keyboard Tab navigation, cannot be pressed using Enter or Spacebar, does not fire submit events, does not trigger HTML form validation, and is not announced as a button by screen readers.
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Replaced fake div with semantic <code>&lt;button type="submit" class="btn btn-primary"&gt;Reserve Table&lt;/button&gt;</code>.<br>
+                  <span class="badge-alt-fix mt-1 d-inline-block">Alternative Fix &amp; Decision:</span><br>
+                  <em>Alternative:</em> Add <code>tabindex="0"</code>, <code>role="button"</code>, and custom JavaScript keydown/click handlers to make the <code>&lt;div&gt;</code> emulate a button.<br>
+                  <em>Why we chose ours:</em> Native HTML! A true <code>&lt;button type="submit"&gt;</code> provides native accessibility, built-in keyboard activation, implicit form submission, and native form validation with zero JavaScript overhead.
+                </td>
+              </tr>
+
+              <!-- 14 -->
+              <tr>
+                <td class="text-center fw-bold">14</td>
+                <td><code>&lt;form&gt;</code> (Missing <code>action</code> and <code>method</code>)</td>
+                <td>
+                  <strong>Missing form submission attributes.</strong><br>
+                  Without <code>action</code> and <code>method</code>, the form defaults to GET, appending form data into the URL query parameters (which clutters URLs and stores user emails/phones into browser history).
+                </td>
+                <td>
+                  <span class="badge-fix">Implemented Fix:</span><br>
+                  Added <code>action="#" method="post"</code> to safely handle data submission.
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="assignment-footer text-center">
+    <div class="container">
+      <p class="mb-1 fw-semibold">Web Technologies 1 &bull; Assignment #4: Forms &amp; Validation</p>
+      <small class="text-muted">Developed by Abay Amirzhanuly (IT-2510) &bull; Astana IT University &bull; Fall 2026</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

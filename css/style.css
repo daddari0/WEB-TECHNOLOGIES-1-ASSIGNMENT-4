@@ -1,0 +1,397 @@
+/* ==========================================================================
+   Assignment #4: Forms and Validation (HTML + Bootstrap)
+   Author: Abay Amirzhanuly (IT-2510)
+   Colors: #0F6B5F, #F2A93B, #16302B, #F4F7F5, #E6EFEC
+   ========================================================================== */
+
+:root {
+  --primary-teal: #0F6B5F;
+  --primary-teal-dark: #0b5047;
+  --primary-teal-light: #e7f2f0;
+  --accent-amber: #F2A93B;
+  --accent-amber-hover: #e09628;
+  --dark-text: #16302B;
+  --bg-page: #F4F7F5;
+  --border-light: #E6EFEC;
+  --card-radius: 16px;
+  --input-radius: 8px;
+  --font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--dark-text);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   SHARED NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.assignment-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 2px 10px rgba(22, 48, 43, 0.04);
+}
+
+.assignment-nav .navbar-brand {
+  font-weight: 700;
+  color: var(--primary-teal);
+  letter-spacing: -0.02em;
+}
+
+.assignment-nav .nav-link {
+  font-weight: 600;
+  color: #556b65;
+  padding: 0.5rem 0.9rem !important;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.assignment-nav .nav-link:hover,
+.assignment-nav .nav-link.active {
+  color: var(--primary-teal);
+  background-color: var(--primary-teal-light);
+}
+
+.badge-student {
+  background-color: var(--primary-teal-light);
+  color: var(--primary-teal);
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   TASK 1: BOOK A TRAIN TICKET
+   -------------------------------------------------------------------------- */
+.ticket-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--card-radius);
+  box-shadow: 0 12px 36px rgba(22, 48, 43, 0.07);
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.ticket-header {
+  background-color: var(--primary-teal);
+  color: #ffffff;
+  padding: 1.35rem 2rem;
+}
+
+.ticket-header h1,
+.ticket-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ticket-body {
+  padding: 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .ticket-body {
+    padding: 1.25rem 1rem;
+  }
+  .ticket-header {
+    padding: 1.15rem 1.25rem;
+  }
+}
+
+/* Segmented Trip Type Toggle (One way / Round trip) */
+.trip-type-group {
+  display: inline-flex;
+  background-color: var(--border-light);
+  padding: 4px;
+  border-radius: 30px;
+  gap: 2px;
+}
+
+.trip-type-group input[type="radio"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+.trip-type-label {
+  display: inline-block;
+  padding: 8px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #556b65;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.trip-type-group input[type="radio"]:checked + .trip-type-label {
+  background-color: var(--primary-teal);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 107, 95, 0.25);
+}
+
+.trip-type-group input[type="radio"]:focus-visible + .trip-type-label {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 2px;
+}
+
+/* Input Fields Styling */
+.ticket-form .form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5b736c;
+  margin-bottom: 0.35rem;
+}
+
+.ticket-form .form-control,
+.ticket-form .form-select {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--dark-text);
+  background-color: #fafdfc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--input-radius);
+  padding: 0.65rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticket-form .form-control:focus,
+.ticket-form .form-select:focus {
+  background-color: #ffffff;
+  border-color: var(--primary-teal);
+  box-shadow: 0 0 0 3px rgba(15, 107, 95, 0.15);
+  outline: none;
+}
+
+.ticket-form .input-group-text {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #5b736c;
+  background-color: var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--input-radius) 0 0 var(--input-radius);
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+/* Carriage Class Radio Buttons */
+.carriage-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.carriage-group .form-check-input {
+  cursor: pointer;
+  border-color: #9cb5ae;
+}
+
+.carriage-group .form-check-input:checked {
+  background-color: var(--primary-teal);
+  border-color: var(--primary-teal);
+}
+
+.carriage-group .form-check-label {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--dark-text);
+  cursor: pointer;
+}
+
+/* Checkboxes */
+.ticket-form .form-check-input {
+  cursor: pointer;
+  border-color: #9cb5ae;
+  border-radius: 4px;
+}
+
+.ticket-form .form-check-input:checked {
+  background-color: var(--primary-teal);
+  border-color: var(--primary-teal);
+}
+
+.ticket-form .form-check-label {
+  font-size: 0.88rem;
+  color: #3b524c;
+  cursor: pointer;
+}
+
+/* Action Buttons */
+.btn-find {
+  background-color: var(--accent-amber);
+  color: var(--dark-text);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid var(--accent-amber);
+  border-radius: 28px;
+  padding: 0.65rem 2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(242, 169, 59, 0.25);
+}
+
+.btn-find:hover,
+.btn-find:focus {
+  background-color: var(--accent-amber-hover);
+  border-color: var(--accent-amber-hover);
+  color: var(--dark-text);
+  transform: translateY(-1px);
+}
+
+.btn-clear {
+  background-color: #ffffff;
+  color: #6a827b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  padding: 0.65rem 1.8rem;
+  transition: all 0.2s ease;
+}
+
+.btn-clear:hover,
+.btn-clear:focus {
+  background-color: var(--border-light);
+  color: var(--dark-text);
+}
+
+/* --------------------------------------------------------------------------
+   TASK 2: HACKATHON REGISTRATION (:user-invalid / :user-valid NATIVE RULES)
+   -------------------------------------------------------------------------- */
+.hack-card {
+  background: #ffffff;
+  border: 1px solid #dbe5e1;
+  border-radius: var(--card-radius);
+  box-shadow: 0 14px 40px rgba(22, 48, 43, 0.08);
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hack-header {
+  background: linear-gradient(135deg, var(--primary-teal), #0a4941);
+  color: #ffffff;
+  padding: 1.8rem 2rem;
+}
+
+.hack-header h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+}
+
+.hack-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.92rem;
+}
+
+.hack-body {
+  padding: 2.2rem;
+}
+
+@media (max-width: 575.98px) {
+  .hack-body {
+    padding: 1.35rem 1rem;
+  }
+  .hack-header {
+    padding: 1.35rem 1.25rem;
+  }
+}
+
+/* Native CSS Validation States using :user-invalid and :user-valid */
+.hack-form .form-control:user-invalid,
+.hack-form .form-select:user-invalid,
+.hack-form .form-check-input:user-invalid {
+  border-color: #dc3545 !important;
+  background-color: #fff8f8;
+}
+
+.hack-form .form-control:user-valid:not([type="checkbox"]):not([type="radio"]),
+.hack-form .form-select:user-valid {
+  border-color: #198754 !important;
+  background-color: #f8fff9;
+}
+
+/* Show feedback message only when field is :user-invalid */
+.hack-form input:user-invalid ~ .invalid-feedback,
+.hack-form select:user-invalid ~ .invalid-feedback,
+.hack-form textarea:user-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Keep .valid-feedback visible on :user-valid */
+.hack-form input:user-valid ~ .valid-feedback,
+.hack-form select:user-valid ~ .valid-feedback,
+.hack-form textarea:user-valid ~ .valid-feedback {
+  display: block;
+}
+
+.field-hint {
+  font-size: 0.78rem;
+  color: #6a827b;
+  margin-top: 0.2rem;
+}
+
+.required-star {
+  color: #dc3545;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+/* Testing Table for Task 2 */
+.test-suite-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+  padding: 1.8rem;
+  margin-top: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   TASK 3: BAD FORM COMPARISON & PROBLEMS TABLE
+   -------------------------------------------------------------------------- */
+.problem-row-highlight {
+  background-color: #fff5f5;
+  border-left: 4px solid #dc3545;
+}
+
+.badge-fix {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+}
+
+.badge-alt-fix {
+  background-color: #cff4fc;
+  color: #055160;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+}
+
+/* Footer */
+.assignment-footer {
+  margin-top: auto;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light);
+  padding: 1.5rem 0;
+  font-size: 0.88rem;
+  color: #6a827b;
+}
